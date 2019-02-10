@@ -68,14 +68,15 @@ int main(int argc, const char * argv[]) {
     ratio = pow(2.0, 1.0 / notes);
     
     //Generate al frequencies for scale
-    for (int i = 0; i < notes; i++)
+    
+    for (int i = 0; i < notes + 1; i++)
     {
         intervals[i] = frequency;
         frequency *= ratio;
     }
     
     //Read array and write to screen
-    for(int i = 0; i < notes; i++)
+    for(int i = 0; i < notes + 1; i++)
     {
         printf("Note in scale: %d Frequency: %f\n", i, intervals[i]);
     }
