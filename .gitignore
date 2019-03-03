@@ -1,1 +1,15 @@
+ ## IDE Workspace ##
 *.xcodeproj
+
+
+ ## Generated Code ##
+*.o
+
+ ## CMake files ##
+*.cmake
+CMakeCache.txt
+MakeFile.txt
+/TheNScale/nscale/CMakeFiles
+/TheNScale/nscale/CMakeFiles/*
+
+
