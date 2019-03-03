@@ -64,6 +64,7 @@ int main(int argc, const char * argv[]) {
     {
         printf("Insufficient arguments passed\n");
         printf("Usage: nscale [-m] [-i] N startval [outfile.txt]\n");
+        printf(" -m: sets startval to be MIDI note not frequency\n -i: prints the calculated intervals as well as the abs frequency\n outfile: optional text filename for outut data\n");
         return 1;
     }
     
@@ -144,24 +145,27 @@ int main(int argc, const char * argv[]) {
     ///Read array, write to screen and optional to file
     for(i = 0; i <= notes; i++)
     {
+        double ratio_power = pow(ratio, i);
+        double interval = intervals[i];
+        
         if(write_interval)
         {
-            printf("%d:\t%f\t%f\n", i, pow(ratio, i), intervals[i]);
+            printf("%d:\t%f\t%f\n", i, ratio_power, interval);
         }
         else
         {
-            printf("%d: \t%f\n", i, intervals[i]);
+            printf("%d: \t%f\n", i, interval);
         }
         
         if(fp)
         {
             if(write_interval)
             {
-                err = fprintf(fp, "%d: \t%f\t%f\n", i, pow(ratio, i), intervals[i]);
+                err = fprintf(fp, "%d: \t%f\t%f\n", i, ratio_power, interval);
             }
             else
             {
-                err = fprintf(fp, "%d: \t%f\n", i, intervals[i]);
+                err = fprintf(fp, "%d: \t%f\n", i, interval);
             }
             if(err < 0)
             {
